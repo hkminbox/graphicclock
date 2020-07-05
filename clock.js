@@ -17,15 +17,19 @@ function setup()
 	angleMode(DEGREES);
 	font = loadFont('assets/Monoton-Regular.ttf');
   	font2 = loadFont('assets/Orbitron-VariableFont_wght.ttf');
+  	img = loadImage('assets/images/morning.png');
+  	img2 = loadImage('assets/images/night.png');
 }
 
 function draw()
 {
 	background(51);
 
-	let hr = hour();
+	let hr = 15;
 	let min = minute();
 	let sec = second();
+
+
 	if(CHECK_LOG && SECOND_DELAY)
 	{
 		console.log((hr%12)+ ' : ' + min + ' : ' + sec);
@@ -46,6 +50,22 @@ function draw()
     textSize(50);
 
     h=hr;
+    // console.log(h);
+
+    if(h<=6 || h>=18) 
+	{
+		image(img2,width*0.75,height*0.6,img.width/2, img.height/2);
+		//night
+		// console.log('Night');
+	}
+	else
+	{
+		image(img,width*0.75,height*0.6,img.width/2, img.height/2);
+		// console.log('Day');
+		//day
+	}
+
+
     if(hr!=12)
     {
     	hr = hr%12;
