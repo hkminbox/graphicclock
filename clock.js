@@ -1,4 +1,4 @@
-var flags = false;
+var flags = true;
 if(flags === true)
 {
 	var CHECK_LOG =true;
@@ -23,7 +23,7 @@ function draw()
 {
 	background(51);
 
-	let hr = 12;
+	let hr = hour();
 	let min = minute();
 	let sec = second();
 	if(CHECK_LOG && SECOND_DELAY)
@@ -86,10 +86,18 @@ function draw()
     let hrArcAngle = map(h , 0 ,24 , 0, 360);
     let minArcAngle = map(min , 0 ,60 , 0, 360);
     let secArcAngle = map(sec , 0 ,60 , 0, 360);
-
-    arc(100,210,150,150,0, hrArcAngle);
-    arc(300,210,150,150,0, minArcAngle);
-    arc(500,210,150,150,0, secArcAngle);
+    if(h!==0)
+    {
+    	arc(100,210,150,150,0, hrArcAngle);
+    }
+    if(min!=0)
+    {
+	    arc(300,210,150,150,0, minArcAngle);
+	}
+	if(sec!=0)
+	{
+	    arc(500,210,150,150,0, secArcAngle);
+	}
 
 
 
