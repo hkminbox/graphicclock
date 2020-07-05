@@ -1,18 +1,34 @@
+var bgColor = 51;
 var flags = false;
-if(flags === true)
-{
-	var CHECK_LOG =true;
-	var SECOND_DELAY =true;
-	var CHECK_LOG_DISPLAY = true;
-	var SECOND_DELAY_DISPLAY =true;
-
-}
+var CHECK_LOG =false;
+var SECOND_DELAY =false;
+var CHECK_LOG_DISPLAY = false;
+var SECOND_DELAY_DISPLAY =false;
 var secHistory;
-var secHistory2;
+var fontColor = 255;
+    var secHistory2;
+function logcheck()
+{
+    if(flags === true)
+    {
+    	CHECK_LOG =true;
+    	SECOND_DELAY =true;
+    	CHECK_LOG_DISPLAY = true;
+    	SECOND_DELAY_DISPLAY =true;
 
+    }
+}
+function mousePressed(){
+    fontColor = color( random(255,155), random(255,155), random(255,155) );
+    if(CHECK_LOG)
+    {
+        console.log(fontColor.levels);
+    }
+}
 
 function setup()
-{
+{   
+    logcheck();
 	createCanvas(900,300);
 	angleMode(DEGREES);
 	font = loadFont('assets/Monoton-Regular.ttf');
@@ -23,9 +39,9 @@ function setup()
 
 function draw()
 {
-	background(51);
+	background(bgColor);
 
-	let hr = 15;
+	let hr = hour();
 	let min = minute();
 	let sec = second();
 
@@ -43,7 +59,7 @@ function draw()
 	}
 
 
-	fill(255);
+	fill(fontColor);
 	noStroke();
 	textFont(font);
 	textAlign(CENTER,CENTER);
