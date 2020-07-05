@@ -1,4 +1,4 @@
-var flags = true;
+var flags = false;
 if(flags === true)
 {
 	var CHECK_LOG =true;
@@ -66,7 +66,7 @@ function draw()
     text(min, 300, 200);
     text(sec, 500, 200);
 
-
+    // translate(200,200);
     strokeWeight(6);
     stroke(255);
     noFill();
@@ -75,7 +75,6 @@ function draw()
     ellipse(500,210,150,150);
 
     strokeWeight(4);
-    stroke(0,255,150);
     /*htime = h*60*60 + min*60 + sec ;  //0 to 86400
     mtime = min*60 + sec;   //0 to 3600
     stime = sec;
@@ -88,15 +87,30 @@ function draw()
     let secArcAngle = map(sec , 0 ,60 , 0, 360);
     if(h!==0)
     {
-    	arc(100,210,150,150,0, hrArcAngle);
+    	push();
+    	translate(100,210);
+    	rotate(-90);
+    	stroke(0,255,150);
+    	arc(0,0,150,150,0, hrArcAngle);
+    	pop();
     }
     if(min!=0)
     {
-	    arc(300,210,150,150,0, minArcAngle);
+    	push();
+    	translate(300,210);
+    	rotate(-90);
+    	stroke(255,0,150);
+	    arc(0,0,150,150,0, minArcAngle);
+    	pop();
 	}
 	if(sec!=0)
 	{
-	    arc(500,210,150,150,0, secArcAngle);
+		push();
+    	translate(500,210);
+    	rotate(-90);
+    	stroke(150,255,0);
+	    arc(0,0,150,150,0, secArcAngle);
+    	pop();
 	}
 
 
