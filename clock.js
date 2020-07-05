@@ -1,4 +1,4 @@
-var flags = true;
+var flags = false;
 if(flags === true)
 {
 	var CHECK_LOG =true;
@@ -41,12 +41,14 @@ function draw()
 	fill(255);
 	noStroke();
 	textFont(font);
-	textAlign(LEFT);
+	textAlign(CENTER);
     textSize(50);
 
-	if((hr%12)<10)
+    h=hr;
+    hr = hr%12;
+	if(hr<10)
     {
-		hr = '0' + hr%12;
+		hr = '0' + hr;
     }
     if(min<10)
     {
@@ -56,15 +58,20 @@ function draw()
     {
 		sec =  '0' +  sec;
     }
+    text(hr, 110, 200);
+    text(min, 310, 200);
+    text(sec, 510, 200);
+
     	if(CHECK_LOG_DISPLAY && SECOND_DELAY_DISPLAY)
 	{
 		console.log('Display format: ' + hr + ' : ' + min + ' : ' + sec);
 		secHistory2 = sec
 		SECOND_DELAY_DISPLAY = false;
 	}
-	if(sec != secHistory)
+	if(sec != secHistory2)
 	{
 		SECOND_DELAY_DISPLAY = true;
 
 	}
+
 }
