@@ -14,6 +14,7 @@ var secHistory2;
 function setup()
 {
 	createCanvas(900,300);
+	angleMode(DEGREES);
 	font = loadFont('assets/Monoton-Regular.ttf');
   	font2 = loadFont('assets/Orbitron-VariableFont_wght.ttf');
 }
@@ -22,7 +23,7 @@ function draw()
 {
 	background(51);
 
-	let hr = hour();
+	let hr = 12;
 	let min = minute();
 	let sec = second();
 	if(CHECK_LOG && SECOND_DELAY)
@@ -45,7 +46,10 @@ function draw()
     textSize(50);
 
     h=hr;
-    hr = hr%12;
+    if(hr!=12)
+    {
+    	hr = hr%12;
+    }
 	if(hr<10)
     {
 		hr = '0' + hr;
@@ -63,15 +67,33 @@ function draw()
     text(sec, 500, 200);
 
 
-    strokeWeight(4);
+    strokeWeight(6);
     stroke(255);
     noFill();
     ellipse(100,210,150,150);
     ellipse(300,210,150,150);
     ellipse(500,210,150,150);
 
+    strokeWeight(4);
+    stroke(0,255,150);
+    /*htime = h*60*60 + min*60 + sec ;  //0 to 86400
+    mtime = min*60 + sec;   //0 to 3600
+    stime = sec;
+    let hrArcAngle = map(htime , 0 ,86400 , 0, 360);
+    let minArcAngle = map(mtime , 0 ,3600 , 0, 360);
+    let secArcAngle = map(stime , 0 ,60 , 0, 360);*/
 
-    	if(CHECK_LOG_DISPLAY && SECOND_DELAY_DISPLAY)
+    let hrArcAngle = map(h , 0 ,24 , 0, 360);
+    let minArcAngle = map(min , 0 ,60 , 0, 360);
+    let secArcAngle = map(sec , 0 ,60 , 0, 360);
+
+    arc(100,210,150,150,0, hrArcAngle);
+    arc(300,210,150,150,0, minArcAngle);
+    arc(500,210,150,150,0, secArcAngle);
+
+
+
+    if(CHECK_LOG_DISPLAY && SECOND_DELAY_DISPLAY)
 	{
 		console.log('Display format: ' + hr + ' : ' + min + ' : ' + sec);
 		secHistory2 = sec
