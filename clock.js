@@ -41,7 +41,7 @@ function draw()
 	fill(255);
 	noStroke();
 	textFont(font);
-	textAlign(CENTER);
+	textAlign(CENTER,CENTER);
     textSize(50);
 
     h=hr;
@@ -58,9 +58,18 @@ function draw()
     {
 		sec =  '0' +  sec;
     }
-    text(hr, 110, 200);
-    text(min, 310, 200);
-    text(sec, 510, 200);
+    text(hr, 100, 200);
+    text(min, 300, 200);
+    text(sec, 500, 200);
+
+
+    strokeWeight(4);
+    stroke(255);
+    noFill();
+    ellipse(100,210,150,150);
+    ellipse(300,210,150,150);
+    ellipse(500,210,150,150);
+
 
     	if(CHECK_LOG_DISPLAY && SECOND_DELAY_DISPLAY)
 	{
